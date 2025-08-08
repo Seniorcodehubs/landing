@@ -4,9 +4,9 @@
 */
 
 :root {
-  --bg-0: #0b021a;
-  --bg-1: #120229;
-  --bg-2: #1d073f;
+  --bg-0: #0a0218;
+  --bg-1: #1a0435;
+  --bg-2: #2d0850;
   --purple-0: #caa9ff;
   --purple-1: #b37bff;
   --purple-2: #9d57ff;
@@ -44,17 +44,11 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter,
     Arial, "Apple Color Emoji", "Segoe UI Emoji";
   color: var(--text-0);
-  background: radial-gradient(
-      1200px 800px at 85% -10%,
-      rgba(154, 68, 255, 0.32),
-      transparent 60%
-    ),
-    radial-gradient(
-      900px 700px at -5% 10%,
-      rgba(80, 0, 180, 0.45),
-      transparent 60%
-    ),
-    linear-gradient(180deg, var(--bg-1), var(--bg-2) 40%, var(--bg-0));
+  background: 
+    radial-gradient(1400px 900px at 90% -15%, rgba(172, 80, 255, 0.4), transparent 65%),
+    radial-gradient(1000px 800px at -10% 15%, rgba(100, 0, 255, 0.5), transparent 65%),
+    radial-gradient(800px 600px at 50% 80%, rgba(255, 255, 255, 0.15), transparent 70%),
+    linear-gradient(180deg, #0a0218 0%, #1a0435 25%, #2d0850 60%, #0a0218 100%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
