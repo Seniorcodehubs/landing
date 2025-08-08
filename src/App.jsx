@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./index.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 }
 
 function NavBar() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <header className="nav">
       <div className="nav__glass">
@@ -29,12 +31,77 @@ function NavBar() {
           <a href="#services">Services</a>
           <a href="#work">Work</a>
           <a href="#about">About</a>
+        </nav>
+        <div className="nav__actions">
+          <ThemeToggle />
           <a href="#contact" className="btn btn--ghost">
             Contact
           </a>
-        </nav>
+          <button
+            className="nav__menuBtn"
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            ☰
+          </button>
+        </div>
       </div>
+      {menuOpen && (
+        <div className="nav__menu" role="menu">
+          <a
+            href="#services"
+            role="menuitem"
+            onClick={() => setMenuOpen(false)}
+          >
+            Services
+          </a>
+          <a href="#work" role="menuitem" onClick={() => setMenuOpen(false)}>
+            Work
+          </a>
+          <a href="#about" role="menuitem" onClick={() => setMenuOpen(false)}>
+            About
+          </a>
+          <a href="#contact" role="menuitem" onClick={() => setMenuOpen(false)}>
+            Contact
+          </a>
+        </div>
+      )}
     </header>
+  );
+}
+
+function ThemeToggle() {
+  const [theme, setTheme] = useState(() => {
+    const saved =
+      typeof window !== "undefined" ? localStorage.getItem("theme") : null;
+    if (saved === "light" || saved === "dark") return saved;
+    const prefersLight =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: light)").matches;
+    return prefersLight ? "light" : "dark";
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const isLight = theme === "light";
+  return (
+    <button
+      className={`toggle ${isLight ? "is-light" : "is-dark"}`}
+      aria-label="Toggle theme"
+      aria-pressed={isLight}
+      title="Toggle theme"
+      onClick={() => setTheme(isLight ? "dark" : "light")}
+    >
+      <span className="toggle__icon" aria-hidden>
+        {isLight ? "☀" : "🌙"}
+      </span>
+    </button>
   );
 }
 
@@ -296,7 +363,7 @@ function CTA() {
         <h2>Let’s build your next advantage</h2>
         <p>Tell us your goal. We’ll propose a crisp plan within 48 hours.</p>
         <a
-          className="btn btn--primary btn--xl"
+          className="btn btn--primary btn--xl btn--block-sm"
           href="mailto:hello@seniorcodehub.dev"
         >
           hello@seniorcodehub.dev
