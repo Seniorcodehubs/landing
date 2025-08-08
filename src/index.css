@@ -44,19 +44,49 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter,
     Arial, "Apple Color Emoji", "Segoe UI Emoji";
   color: var(--text-0);
-  background: 
-    radial-gradient(1400px 900px at 90% -15%, rgba(172, 80, 255, 0.4), transparent 65%),
-    radial-gradient(1000px 800px at -10% 15%, rgba(100, 0, 255, 0.5), transparent 65%),
-    radial-gradient(800px 600px at 50% 80%, rgba(255, 255, 255, 0.15), transparent 70%),
-    linear-gradient(180deg, #0a0218 0%, #1a0435 25%, #2d0850 60%, #0a0218 100%);
+  /* Base gradient; grid+glows are provided by .page::before so the look is uniform site-wide. */
+  background-color: var(--bg-0);
+  background-image: linear-gradient(
+    180deg,
+    #0a0218 0%,
+    #190233 45%,
+    #120229 100%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .page {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100%;
+}
+/* Site-wide grid and glows */
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55; /* reduced intensity */
+  background-image:
+    /* glows */ radial-gradient(
+      750px 450px at 88% 8%,
+      rgba(172, 80, 255, 0.28),
+      transparent 70%
+    ),
+    radial-gradient(
+      600px 380px at 12% 15%,
+      rgba(100, 0, 255, 0.22),
+      transparent 70%
+    ),
+    /* grid */ linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: auto, auto, 48px 48px, 48px 48px;
+  background-position: center, center, center, center;
 }
 
 .container {
@@ -187,64 +217,11 @@ body {
   padding: 120px 0 72px;
   overflow: clip;
 }
+/* Disable the hero-only background since we now draw it globally */
 .hero__bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+  display: none;
 }
-.gloss {
-  position: absolute;
-  filter: blur(40px);
-  opacity: 0.8;
-}
-.gloss--1 {
-  width: 580px;
-  height: 580px;
-  right: -180px;
-  top: -160px;
-  background: radial-gradient(
-    closest-side,
-    rgba(172, 80, 255, 0.8),
-    transparent 70%
-  );
-}
-.gloss--2 {
-  width: 460px;
-  height: 460px;
-  left: -140px;
-  top: -100px;
-  background: radial-gradient(
-    closest-side,
-    rgba(100, 0, 255, 0.6),
-    transparent 70%
-  );
-}
-.gloss--3 {
-  width: 720px;
-  height: 720px;
-  left: 40%;
-  bottom: -360px;
-  background: radial-gradient(
-    closest-side,
-    rgba(255, 255, 255, 0.22),
-    transparent 70%
-  );
-}
-.grid {
-  position: absolute;
-  inset: -1px;
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.06) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(
-    800px 500px at 50% 10%,
-    black 20%,
-    transparent 70%
-  );
-}
+
 .hero__content {
   position: relative;
   text-align: center;
@@ -424,7 +401,7 @@ body {
 .section--contrast .panel {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.09),
+    rgba(255, 255, 255, 0.07),
     rgba(255, 255, 255, 0.04)
   );
   border: 1px solid var(--stroke);
@@ -442,7 +419,7 @@ body {
   border-radius: inherit;
   background: radial-gradient(
     600px 220px at 10% -30%,
-    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.22),
     transparent 60%
   );
   pointer-events: none;
