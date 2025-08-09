@@ -1,12 +1,12 @@
-# React + Vite
+## Senior CodeHub Landing — Next.js
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- dev: `npm run dev`
+- build: `npm run build`
+- start: `npm start`
 
-Currently, two official plugins are available:
+Structure:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `app/` App Router with `layout.jsx`, `page.jsx`, global CSS in `app/globals.css`
+- `components/` split UI components (NavBar, Hero, etc.)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Note: legacy Vite entry files were removed. Global styles were migrated from `src/index.css` via import in `app/globals.css`.
