@@ -1,0 +1,16 @@
+{
+  "name": "Senior CodeHub",
+  "short_name": "CodeHub",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0218",
+  "theme_color": "#0a0218",
+  "icons": [
+    {
+      "src": "/seo/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

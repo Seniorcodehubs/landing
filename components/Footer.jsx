@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="container footer__row">
         <div className="brand brand--sm">
           <img
-            src="/icon.svg"
+            src="/seo/icon.svg"
             alt=""
             aria-hidden="true"
             className="brand__gem"

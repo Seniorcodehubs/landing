@@ -1,0 +1,10 @@
+/* TEAM */
+Developer: Senior CodeHub
+Site: https://seniorcodehub.dev
+Twitter: https://x.com/
+Location: Remote-first
+
+/* THANKS */
+Thanks: Next.js, React
+
+

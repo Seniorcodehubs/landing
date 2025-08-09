@@ -10,7 +10,7 @@ export default function NavBar() {
       <div className="nav__glass">
         <div className="brand">
           <img
-            src="/icon.svg"
+            src="/seo/icon.svg"
             alt=""
             aria-hidden="true"
             className="brand__gem"
